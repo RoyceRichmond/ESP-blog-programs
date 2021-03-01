@@ -19,11 +19,7 @@ static const char *TAG = "showdown";
 
 #define EXAMPLE_CHASE_SPEED_MS (10)
 
-void app_main(void)
-{
-    uint32_t red = 0;
-    uint32_t green = 0;
-    uint32_t blue = 0;
+void app_main(void){
 
     rmt_config_t config = RMT_DEFAULT_CONFIG_TX(8, RMT_TX_CHANNEL);
     // set counter clock to 40MHz
@@ -46,52 +42,42 @@ void app_main(void)
         for (int a=0; a<=2;a++){
             for (int i = 0; i <= 255; i+=3) {
                 // Write RGB values to strip driver
-                ESP_ERROR_CHECK(strip->set_pixel(strip, 0, red, green, i));
+                ESP_ERROR_CHECK(strip->set_pixel(strip, 0, 0, 0, i));
                 // Flush RGB values to LEDs
                 ESP_ERROR_CHECK(strip->refresh(strip, 100));
                 vTaskDelay(pdMS_TO_TICKS(EXAMPLE_CHASE_SPEED_MS));
             }
             for (int i = 0; i <= 255; i+=3) {
-                // Write RGB values to strip driver
-                ESP_ERROR_CHECK(strip->set_pixel(strip, 0, red, i, 255));
-                // Flush RGB values to LEDs
+                ESP_ERROR_CHECK(strip->set_pixel(strip, 0, 0, i, 255));
                 ESP_ERROR_CHECK(strip->refresh(strip, 100));
                 vTaskDelay(pdMS_TO_TICKS(EXAMPLE_CHASE_SPEED_MS));
             }
             for (int i = 255; i != 0; i-=3) {
-                // Write RGB values to strip driver
-                ESP_ERROR_CHECK(strip->set_pixel(strip, 0, red, 255, i));
+                ESP_ERROR_CHECK(strip->set_pixel(strip, 0, 0, 255, i));
                 ESP_ERROR_CHECK(strip->refresh(strip, 100));
                 vTaskDelay(pdMS_TO_TICKS(EXAMPLE_CHASE_SPEED_MS));
             }
             for (int i = 0; i <= 255; i+=3) {
-                // Write RGB values to strip driver
                 ESP_ERROR_CHECK(strip->set_pixel(strip, 0, i, 255, 0));
-                // Flush RGB values to LEDs
                 ESP_ERROR_CHECK(strip->refresh(strip, 100));
                 vTaskDelay(pdMS_TO_TICKS(EXAMPLE_CHASE_SPEED_MS));
             }
             for (int i = 255; i != 0; i-=3) {
-                // Write RGB values to strip driver
                 ESP_ERROR_CHECK(strip->set_pixel(strip, 0, 255, i, 0));
                 ESP_ERROR_CHECK(strip->refresh(strip, 100));
                 vTaskDelay(pdMS_TO_TICKS(EXAMPLE_CHASE_SPEED_MS));
             }
             for (int i = 0; i <= 255; i+=3) {
-                // Write RGB values to strip driver
                 ESP_ERROR_CHECK(strip->set_pixel(strip, 0, 255, 0, i));
-                // Flush RGB values to LEDs
                 ESP_ERROR_CHECK(strip->refresh(strip, 100));
                 vTaskDelay(pdMS_TO_TICKS(EXAMPLE_CHASE_SPEED_MS));
             }
             for (int i = 255; i != 0; i-=3) {
-                // Write RGB values to strip driver
                 ESP_ERROR_CHECK(strip->set_pixel(strip, 0, i, 0, 255));
                 ESP_ERROR_CHECK(strip->refresh(strip, 100));
                 vTaskDelay(pdMS_TO_TICKS(EXAMPLE_CHASE_SPEED_MS));
             }
             for (int i = 255; i != 0; i-=3) {
-                // Write RGB values to strip driver
                 ESP_ERROR_CHECK(strip->set_pixel(strip, 0, 0, 0, i));
                 ESP_ERROR_CHECK(strip->refresh(strip, 100));
                 vTaskDelay(pdMS_TO_TICKS(EXAMPLE_CHASE_SPEED_MS));
